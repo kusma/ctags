@@ -606,10 +606,10 @@ static void createTags (const unsigned int nestLevel, statementInfo *const paren
 
 static void initToken (tokenInfo* const token)
 {
-	token->type			= TOKEN_NONE;
-	token->keyword		= KEYWORD_NONE;
-	token->lineNumber	= getSourceLineNumber ();
-	token->filePosition	= getInputFilePosition ();
+	token->type         = TOKEN_NONE;
+	token->keyword	    = KEYWORD_NONE;
+	token->lineNumber   = getSourceLineNumber ();
+	token->filePosition = getInputFilePosition ();
 	vStringClear (token->name);
 }
 
@@ -1170,7 +1170,7 @@ static tagType declToTagType (const declType declaration)
 		case DECL_TEMPLATE: 	type = TAG_TEMPLATE; 	break;
 		case DECL_STRUCT:       type = TAG_STRUCT;      break;
 		case DECL_UNION:        type = TAG_UNION;       break;
-		case DECL_VERSION: 		type = TAG_VERSION; 	break;
+		case DECL_VERSION:      type = TAG_VERSION;     break;
 		case DECL_ANNOTATION:   type = TAG_ANNOTATION;  break;
 
 		default: Assert ("Unexpected declaration" == NULL); break;
@@ -1197,8 +1197,8 @@ static void addContextSeparator (vString *const scope)
 }
 
 static void addOtherFields (tagEntryInfo* const tag, const tagType type,
-							const statementInfo *const st,
-							vString *const scope, vString *const typeRef)
+                            const statementInfo *const st,
+                            vString *const scope, vString *const typeRef)
 {
 	/*  For selected tag types, append an extension flag designating the
 	 *  parent object in which the tag is defined.
@@ -1798,14 +1798,14 @@ static void readVersionName (tokenInfo *const token, const int firstChar)
 		c = cppGetc ();
 	}
 	vStringTerminate (name);
-    cppGetc ();
+	cppGetc ();
 }
 
 static void readVersion (statementInfo *const st)
 {
-    tokenInfo *const token = activeToken (st);
+	tokenInfo *const token = activeToken (st);
 	Assert (isType (token, TOKEN_KEYWORD));
-    skipToNonWhite ();
+	skipToNonWhite ();
 	readVersionName (token, cppGetc ());
 	token->type = TOKEN_NAME;
 	st->declaration = DECL_VERSION;
@@ -1888,7 +1888,7 @@ static void readOperator (statementInfo *const st)
 
 	cppUngetc (c);
 
-	token->type	= TOKEN_NAME;
+	token->type    = TOKEN_NAME;
 	token->keyword = KEYWORD_NONE;
 	processName (st);
 }
