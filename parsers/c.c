@@ -2282,6 +2282,7 @@ static boolean skipPostArgumentStuff (
 					}
 					break;
 				case KEYWORD_ALIAS:
+				case KEYWORD_AS:
 				case KEYWORD_CATCH:
 				case KEYWORD_CLASS:
 				case KEYWORD_EXPLICIT:
